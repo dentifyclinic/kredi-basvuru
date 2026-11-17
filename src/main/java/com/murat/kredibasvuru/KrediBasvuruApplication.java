@@ -1,13 +1,13 @@
-package com.example.demo;
+package com.murat.kredibasvuru;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class KrediBasvuruApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(KrediBasvuruApplication.class, args);
 	}
 
 }

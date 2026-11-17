@@ -1,10 +1,10 @@
-package com.example.demo;
+package com.murat.kredibasvuru;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class KrediBasvuruApplicationTests {
 
 	@Test
 	void contextLoads() {
