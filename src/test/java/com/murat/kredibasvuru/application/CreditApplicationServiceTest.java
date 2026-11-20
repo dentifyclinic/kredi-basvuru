@@ -25,7 +25,7 @@ public class CreditApplicationServiceTest {
     }
 
     @Test
-    void shouldThrowException_whenPriceIsNegative() {
+    void shouldThrowException_whenAmountIsNegative() {
         //given
         FakeNotificationSender fakeSender = new FakeNotificationSender();
         CreditApplicationService service = new CreditApplicationService(fakeSender);
@@ -36,6 +36,23 @@ public class CreditApplicationServiceTest {
     }
 
     @Test
+    void shouldThrowException_whenAmountIsZero() {
+        FakeNotificationSender fakeSender = new FakeNotificationSender();
+        CreditApplicationService service = new CreditApplicationService(fakeSender);
+
+        assertThatThrownBy(() -> service.submit("Ahmet Yılmaz", new BigDecimal(0))).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void shouldThrowException_whenAmountIsNull() {
+        FakeNotificationSender fakeSender = new FakeNotificationSender();
+        CreditApplicationService service = new CreditApplicationService(fakeSender);
+
+        assertThatThrownBy(() -> service.submit("Ahmet Yılmaz", null)).isInstanceOf(IllegalArgumentException.class);
+        assertThat(fakeSender.getSendMessages()).isEmpty();
+    }
+
+    @Test
     void shouldThrowException_whenCustomerNameIsEmpty() {
         //given
         FakeNotificationSender fakeSender = new FakeNotificationSender();
@@ -43,6 +60,17 @@ public class CreditApplicationServiceTest {
 
         //then
         assertThatThrownBy(() -> service.submit(" ", new BigDecimal(1)));
-        assertThat(fakeSender.getSendMessages()).hasSize(0);
+        assertThat(fakeSender.getSendMessages()).isEmpty();
+    }
+
+    @Test
+    void shouldThrowException_whenCustomerNameIsNull() {
+        //given
+        FakeNotificationSender fakeSender = new FakeNotificationSender();
+        CreditApplicationService service = new CreditApplicationService(fakeSender);
+
+        //then
+        assertThatThrownBy(() -> service.submit(null, new BigDecimal(1)));
+        assertThat(fakeSender.getSendMessages()).isEmpty();
     }
 }

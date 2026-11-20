@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class SmsNotificationSender implements NotificationSender {
     public void send(String to, String message) {
-        log.info(String.format("Sms gönderildi -> to: {0}, message: {1}", to, message));
+        log.info("Sms gönderildi -> to: {}, message: {}", to, message);
     }
 }

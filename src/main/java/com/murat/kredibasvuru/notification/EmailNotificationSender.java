@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component;
 @Primary
 public class EmailNotificationSender implements NotificationSender {
     public void send(String to, String message) {
-        log.info(String.format("E-posta gönderildi -> to: {0}, message: {1}", to, message));
+        log.info("E-posta gönderildi -> to: {}, message: {}", to, message);
     }
 }
