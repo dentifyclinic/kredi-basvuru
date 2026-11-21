@@ -6,6 +6,6 @@ import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 
-public record CreateCreditApplicationRequest(@NotBlank  String customerName, @NotNull @Positive BigDecimal amount) {
+public record CreateCreditApplicationRequest(@NotBlank String customerName, @NotNull @Positive BigDecimal amount) {
 
 }
