@@ -51,14 +51,14 @@ public class CreditApplicationServiceTest {
     @Test
     void shouldThrowException_whenCustomerNameIsEmpty() {
         //then
-        assertThatThrownBy(() -> service.submit(" ", new BigDecimal(1)));
+        assertThatThrownBy(() -> service.submit(" ", new BigDecimal(1))).isInstanceOf(IllegalArgumentException.class);
         assertThat(fakeSender.getSendMessages()).isEmpty();
     }
 
     @Test
     void shouldThrowException_whenCustomerNameIsNull() {
         //then
-        assertThatThrownBy(() -> service.submit(null, new BigDecimal(1)));
+        assertThatThrownBy(() -> service.submit(null, new BigDecimal(1))).isInstanceOf(IllegalArgumentException.class);
         assertThat(fakeSender.getSendMessages()).isEmpty();
     }
 }
