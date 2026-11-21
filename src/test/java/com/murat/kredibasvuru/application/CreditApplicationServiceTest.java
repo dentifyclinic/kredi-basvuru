@@ -11,8 +11,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CreditApplicationServiceTest {
 
-    FakeNotificationSender fakeSender;
-    CreditApplicationService service;
+    private FakeNotificationSender fakeSender;
+    private CreditApplicationService service;
 
     @BeforeEach
     void setUp() {

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Primary
 public class EmailNotificationSender implements NotificationSender {
+
+    @Override
     public void send(String to, String message) {
         log.info("E-posta gönderildi -> to: {}, message: {}", to, message);
     }
