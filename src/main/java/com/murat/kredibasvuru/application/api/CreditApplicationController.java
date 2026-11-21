@@ -1,6 +1,7 @@
 package com.murat.kredibasvuru.application.api;
 
 import com.murat.kredibasvuru.application.CreditApplicationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class CreditApplicationController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CreditApplicationResponse createApplication(@RequestBody CreateCreditApplicationRequest request) {
+    public CreditApplicationResponse createApplication(@RequestBody @Valid CreateCreditApplicationRequest request) {
         UUID applicationId = creditApplicationService.submit(request.customerName(), request.amount());
         return new CreditApplicationResponse(applicationId);
     }
