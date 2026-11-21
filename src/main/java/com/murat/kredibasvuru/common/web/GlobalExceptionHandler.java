@@ -13,14 +13,14 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ProblemDetail getException(MethodArgumentNotValidException e) {
+    public ProblemDetail handleValidationException(MethodArgumentNotValidException e) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, "Validation Failed");
-        Map<String, Object> fieldErrors = new HashMap<>();
+        Map<String, String> fieldErrors = new HashMap<>();
         e.getBindingResult().getFieldErrors()
-                .forEach(fieldError -> {
-                    fieldErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
-                });
-        problemDetail.setProperties(fieldErrors);
+                .forEach(fieldError ->
+                        fieldErrors.put(fieldError.getField(), fieldError.getDefaultMessage())
+                );
+        problemDetail.setProperty("errors", fieldErrors);
         return problemDetail;
     }
 }
